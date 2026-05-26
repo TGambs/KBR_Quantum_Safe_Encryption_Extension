@@ -1,0 +1,484 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+/* ----------- Global Vars ------------*/
+
+:root {
+  --darkBg: #19192a;
+  --midBg: #182342;
+  --midBg2: #0f3460;
+  --areaBg: #1e2a46;
+  --inputBg: #162145;
+
+  --redBtnCol: #e94560;
+  --blueBtnCol: #4fc3f7;
+  --greenBtnCol: #43e97b;
+
+  --txtCol1: #e3e4f0;
+  --txtCol2: #9caeb6;
+  --txtCol3: #1a1a31;
+
+  --border1: rgba(79, 195, 247, 0.2);
+  --border2: rgba(79, 195, 247, 0.6);
+
+  --smallRad: 4px;
+  --midRad: 9px;
+  --largeRad: 12px;
+
+  --tableBg: rgba(15, 52, 96, 0.8);
+  --tableRowSel: rgba(79, 195, 247, 0.25);
+
+  --shadow1: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow2: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  --logoImg: src/KBR_logo.png;
+}
+
+/*-----------------------------------------------*/
+
+body {
+  background-color: var(--darkBg);
+  font-family: "Oxygen", sans-serif;
+}
+
+p {
+  color: var(--txtCol1);
+}
+
+/*----------------------------------------------------*/
+
+#allCont {
+  display: flex;
+  background-color: var(--darkBg);
+}
+
+#mainPgCont,
+#storagePgCont,
+#keyPgCont,
+#faqPgCont {
+  background-color: var(--midBg);
+  width: 600px;
+  height: 500px;
+  margin: 5px;
+  border: 1px solid var(--border1);
+  border-radius: var(--largeRad);
+}
+
+#keyPgCont {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#storagePgCont {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#faqPgCont {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/*-------- v -- Everything for navbar -- v ------------ */
+#navBarCont {
+  background-color: var(--midBg);
+  width: 100px;
+  height: 500px;
+  margin: 5px;
+  border: 1px solid var(--border1);
+  border-radius: var(--largeRad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#navBarInner {
+  /*background-color: red;*/
+
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  justify-content: space-evenly;
+}
+
+/* image has a width of 90px + height of 84px also with a tiny transparent outline around the img*/
+
+#logoImg,
+#logoTxt {
+  margin: 5px;
+  width: 90px;
+  height: 84px;
+  border-radius: var(--midRad);
+  background-color: var(--midBg2);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#logoTxt {
+  display: none;
+  flex-direction: column;
+  margin: 5px;
+}
+
+#logoTxt p {
+  width: 100%;
+  font-size: 11px;
+  padding: 0px;
+  text-align: center;
+}
+
+#mainBtn,
+#storBtn,
+#keyBtn,
+#faqBtn {
+  background-color: var(--midBg2);
+  margin: 5px 0px;
+  padding: 10px 5px;
+  text-align: center;
+  width: 80px;
+  height: 50px;
+
+  border: 1px solid var(--border1);
+  border-radius: var(--midRad);
+
+  color: var(--txtCol1);
+  font-size: 11px;
+  font-family: inherit;
+
+  cursor: pointer;
+  overflow-y: auto;
+}
+
+#mainBtn:hover,
+#storBtn:hover,
+#keyBtn:hover,
+#faqBtn:hover {
+  opacity: 0.75;
+}
+#mainBtn:focus,
+#storBtn:focus,
+#keyBtn:focus,
+#faqBtn:focus {
+  background-color: grey;
+}
+
+/* --------------------- v --- Main Page --- v ----------------*/
+#inputContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+}
+
+#Lcont {
+  background-color: var(--areaBg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--largeRad);
+  border: 1px solid var(--border1);
+}
+
+#Rcont {
+  background-color: var(--areaBg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--largeRad);
+  border: 1px solid var(--border1);
+}
+
+#leftIn {
+  background-color: var(--inputBg);
+  width: 244px;
+  height: 208px;
+  margin: 5px;
+  border-radius: var(--midRad);
+  border: 1px solid var(--border2);
+}
+
+#rightOut {
+  background-color: var(--inputBg);
+  width: 244px;
+  height: 208px;
+  margin: 5px;
+  border-radius: var(--midRad);
+  border: 1px solid var(--border2);
+}
+
+#inData,
+#outData,
+#enDeKeyInput {
+  resize: none;
+  background: transparent;
+  border-width: 0px;
+  border-radius: var(--midRad);
+  font-size: x-small;
+  color: var(--txtCol1);
+  font-family: inherit;
+  padding: 4px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#inData::placeholder,
+#outData::placeholder,
+#enDeKeyInput::placeholder {
+  color: var(--txtCol2);
+}
+
+/*This hides the scrollbar from the text areas*/
+#inData::-webkit-scrollbar,
+#outData::-webkit-scrollbar,
+#enDeKeyInput::-webkit-scrollbar,
+#pkIn::-webkit-scrollbar,
+#pkTableCont::-webkit-scrollbar,
+#keyAreaCont::-webkit-scrollbar,
+#faqPgCont::-webkit-scrollbar {
+  display: none;
+}
+
+#Bcont {
+  background-color: var(--areaBg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: var(--largeRad);
+  border: 1px solid var(--border1);
+}
+
+#enDeKeyInput {
+  background-color: var(--inputBg);
+  border: 1px solid var(--border2);
+  border-radius: var(--midRad);
+  padding: 5px;
+}
+
+#mainButtonArea {
+  display: flex;
+  width: 400px;
+  justify-content: space-evenly;
+  margin: 10px;
+  padding: 10px;
+}
+
+/*------------------ v - Table Stuff - v ----------------------*/
+#keyAreaCont,
+#pkTableCont {
+  flex: 1;
+  overflow-y: auto;
+}
+#keyArea,
+#pkArea {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  flex-direction: column;
+}
+
+#storageTable,
+#pkTable {
+  background-color: var(--tableBg);
+  border-radius: var(--midRad);
+  table-layout: auto;
+  width: 95%;
+  padding: 5px;
+  /*border-collapse: collapse;*/
+  color: var(--txtCol1);
+  font-size: 12px;
+  font-family: inherit;
+}
+
+#storageTable th,
+#pkTable th {
+  border-bottom: 2px solid var(--blueBtnCol);
+  color: var(--blueBtnCol);
+  /*text-align: left;*/
+  font-size: 11px;
+}
+
+#storageTable td,
+#pkTable td {
+  border-bottom: 0.3px dashed var(--border1);
+  padding: 2px 5px;
+}
+
+.selected {
+  background-color: var(--tableRowSel);
+  cursor: pointer;
+}
+tr:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* -------- v - Button Divs - v -----------*/
+#KGbuttonArea,
+#pkInCont {
+  background-color: var(--areaBg);
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  position: sticky;
+  bottom: 0;
+  border-radius: var(--largeRad);
+  border: 1px solid var(--border1);
+  box-shadow: var(--shadow1);
+}
+
+#KGBr1,
+#PKSr1 {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+#KGBr2 {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5px;
+  padding-top: 10px;
+}
+
+/* ---------------- PK storage page--------------------*/
+#pkTxtIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+#pkIn {
+  resize: none;
+  background-color: var(--inputBg);
+  border: 1px solid var(--border2);
+  border-radius: var(--midRad);
+  color: var(--txtCol1);
+  font-family: inherit;
+}
+
+#refIn {
+  background-color: var(--inputBg);
+  border: 1px solid var(--border2);
+  border-radius: var(--midRad);
+  color: var(--txtCol1);
+  font-family: inherit;
+}
+
+#pkIn::placeholder,
+#refIn::placeholder {
+  color: var(--txtCol2);
+}
+
+/* ------------------- FAQ ---------------------- */
+#faqExpTxt {
+  background-color: var(--areaBg);
+  color: var(--txtCol1);
+  border: 1px solid var(--border2);
+  border-radius: var(--midBg);
+  display: flex;
+  margin: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  align-items: center;
+  flex-direction: column;
+  border-radius: var(--largeRad);
+}
+
+#faqExpTxt h3 {
+  text-decoration: underline;
+}
+
+#faqExpTxt h4 {
+  margin: 2px;
+}
+
+.faqTxt {
+  background-color: var(--midBg2);
+  color: var(--txtCol1);
+  border: 1px solid var(--border2);
+  border-radius: var(--midBg);
+  border-radius: var(--largeRad);
+  margin: 10px;
+  padding: 5px;
+}
+
+#faqBtnArea {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#dataWipeBtn {
+  margin: 10px;
+}
+
+/* ---------------------- buttons ----------------*/
+
+#copyPubKGBtn,
+#deleteKGBtn,
+#copyPrivKGBtn,
+#genKeysBtn,
+#resetNumsBtn,
+#pkInBtn,
+#pkDelBtn,
+#pkCopyBtn,
+#encBtn,
+#decBtn,
+#cpyClip,
+#dataWipeBtn {
+  color: var(--txtCol1);
+  border-radius: var(--smallRad);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow2);
+}
+#copyPubKGBtn:hover,
+#deleteKGBtn:hover,
+#copyPrivKGBtn:hover,
+#genKeysBtn:hover,
+#resetNumsBtn:hover,
+#pkInBtn:hover,
+#pkDelBtn:hover,
+#pkCopyBtn:hover,
+#encBtn:hover,
+#decBtn:hover,
+#cpyClip:hover,
+#dataWipeBtn:hover {
+  opacity: 0.75;
+}
+
+#copyPubKGBtn,
+#copyPrivKGBtn,
+#pkInBtn,
+#encBtn,
+#decBtn {
+  background-color: var(--greenBtnCol);
+  color: var(--txtCol3);
+}
+
+#deleteKGBtn,
+#resetNumsBtn,
+#pkDelBtn,
+#dataWipeBtn {
+  background-color: var(--redBtnCol);
+  color: var(--txtCol3);
+}
+#genKeysBtn,
+#pkCopyBtn,
+#cpyClip {
+  background-color: var(--blueBtnCol);
+  color: var(--txtCol3);
+}

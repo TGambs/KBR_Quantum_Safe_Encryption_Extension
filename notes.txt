@@ -1,0 +1,124 @@
+
+npm install kyber-crystals
+
+mkdir kyber-test-ext
+cd kyber-test-ext
+npm init -y
+npm install kyber-crystals
+npm install -D vite
+
+npm run build       <--- used to compile the project once
+
+npm run watch       <--- used for live rebuilding of the project as it is updated (basically a live "npm run build" for whenever it is saved)
+
+
+-------------- This points to the kyber library that has been 'bundled' into one file (kyber.js) --------------
+// Import from the kyber-crystals package entry point
+import * as kyber from "../src/index.js";
+
+export default kyber;
+----------------------------------------------------------------------------------------------------
+
+-------------- Manifest.json points chrome to each part of the project --------------
+{
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "src/hello.html",
+    "default_icon": "src/hello_extensions.png"
+  },
+  "background": {
+    "service_worker": "build/dist/background.bundle.js",
+    "type": "module"
+  }
+}
+
+------------------------------------------------------------------------------------
+
+-------------- webpack.config.js is used for showing the browser that the dist is what is used --------------
+const path = require('path');
+
+module.exports = {
+  mode: 'production',
+  entry: {
+    background: './src/background.js',
+    popup: './src/popup.js'
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'build/dist'),
+    clean: true
+  },
+  resolve: {
+    fallback: {
+      "crypto": false,
+      "stream": false,
+      "buffer": false
+    }
+  }
+};
+----------------------------------------------------------------------------------------------------------------
+
+
+for AES en/decryption I can use the in-built crypto library
+
+
+--------------------------------------------------------------------------
+
+For encrypting a message:
+- Recipient's public key 
+- Message to be encrypted
+
+- const [ct, ssS] = await KEM.encap(pkR);   <- this created the cipherText (ct) + Shared Secret Sender (ssS)
+- const aesKey = await findAESKey(ssS);  <- This creates the AES encryption key for encrypting the message
+- const iv = crypto.getRandomValues(new Uint8Array(12));  <- IV is needed for AES encryption and can be shared in plaintext (initialisation vector)
+
+- basically the public key is used to calculate the secret value
+- secret value is never shared but is calculated on each side to ensure security
+
+- the message is first translated into a utf8 string (basically ascii but is compatible with every character)
+- the output is an array of ints which each represent each character
+  const encoder = new TextEncoder();
+  const udata = encoder.encode(mssg);
+
+- findAESKey uses inbuilt function "crypto.subtle.importKey(...)" to generate an AES key using the data made by KEM
+- it basically defines what the key is made from and for what type of encryption it is for, as well as what it can do
+- it then returns a type "CryptoKey" which is used in:
+  - ...crypto.subtle.encrypt(
+    { name: "AES-GCM", iv },
+    aesKey,
+    udata,
+    );
+    
+    to generate the encrypted data using the values made
+
+- const eData = new Uint8Array(eDataRaw);   <- this then turns the raw encryption value into an array of integers which is easier to read 
+
+- the sender then sends this to the recipient:
+    - ct
+    - eData
+    - iv
+
+- Using this the recipient can evaluate the necessary information to decrypt the data using their private key
+
+
+
+-------------------
+For decryption:
+- the recipiet needs ct, enMssg, iv, skR
+- ct, enMssg, iv are all sent by the sender 
+- skR is the private key of the recipient and is never shared 
+
+- const ssR = await KEM.decap(ct, skR);  <- if done correctly, the ssR will be calculated to be the same as the ssS used by the sender 
+
+- const aesKey = await findAESKey(ssR);  <- which then means the recipient can calculate the same AES key for decryption 
+
+- then using "crypto.subtle.decrypt(...)", the recipient can decrypt the message using the calculated AES key
+
+- and decode it from utf8 into characters using:
+    const decoder = new TextDecoder();
+    const dMssg = decoder.decode(decry);
+
+

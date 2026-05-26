@@ -1,0 +1,30 @@
+{
+  "name": "browser_extension_testing",
+  "version": "1.0.0",
+  "description": "For practice and testing building chrome and firefox extensions\r Tutorial found here: https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world",
+  "main": "kyber.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TGambs/Browser_Extension_Testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TGambs/Browser_Extension_Testing/issues"
+  },
+  "homepage": "https://github.com/TGambs/Browser_Extension_Testing#readme",
+  "devDependencies": {
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "crystals-kyber-js": "^2.5.0"
+  }
+}
+

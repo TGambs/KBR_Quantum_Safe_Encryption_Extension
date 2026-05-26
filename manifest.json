@@ -1,0 +1,21 @@
+{
+  "name": "KBR",
+  "description": "Post-quantum encryption made easy for everyone",
+  "version": "2.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "src/KBR_logo.png",
+    "32": "src/KBR_logo.png",
+    "48": "src/KBR_logo.png",
+    "128": "src/KBR_logo.png"
+  },
+  "action": {
+    "default_popup": "src/mainPop.html",
+    "default_icon": "src/KBR_logo.png"
+  },
+  "background": {
+    "service_worker": "/build/dist/background.bundle.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "clipboardWrite"]
+}

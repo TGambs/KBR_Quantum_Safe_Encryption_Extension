@@ -1,0 +1,265 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <title>Test Extension</title>
+    <!-- The maximum dimensions of the window is 800 x 600 pixels-->
+    <!-- All Css is stored and managed externally -->
+    <link rel="stylesheet" href="externalCss.css" />
+    
+  </head>
+
+  <body>
+    <!-- allCont holds the entire extension -->
+    <div id="allCont">
+
+      <!-- mainPgCont is a swappable page div -->
+      <div id="mainPgCont">
+
+        <!-- Holds both input areas -->
+        <div id="inputContainer">
+
+          <!-- Left text input -->
+          <div id="Lcont">
+            <p>Input Data</p>
+            <div id="leftIn">
+              <textarea
+                id="inData"
+                rows="18"
+                cols="40"
+                placeholder="Input Data Here..."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Right text output -->
+          <div id="Rcont">
+            <p>Output Data</p>
+            <div id="rightOut">
+              <textarea
+                id="outData"
+                rows="18"
+                cols="40"
+                placeholder="Ouput Text Will Be Shown Here..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom button and key input area -->
+        <div id="Bcont">
+
+          <!-- Key text input -->
+          <div id="bInputArea">
+            <textarea
+              id="enDeKeyInput"
+              rows="5"
+              cols="80"
+              placeholder="Paste Key To Be Used Here..."
+            ></textarea>
+          </div>
+
+          <!-- Button choice area -->
+          <div id="mainButtonArea">
+            <button type="button" id="encBtn">Encrypt</button>
+            <button type="button" id="cpyClip">Copy Output</button>
+            <button type="button" id="decBtn">Decrypt</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- -------------------- KEY STORAGE PAGE -------------------- -->
+      <!-- storagePgCont is a swappable page div -->
+      <div id="storagePgCont">
+
+        <!-- pkTableCont is the background for pkTable-->
+        <div id="pkTableCont">
+          <div id="pkArea">
+            <table id="pkTable"></table>
+          </div>
+        </div>
+
+        <!-- Input area for key and reference to be saved -->
+        <div id="pkInCont">
+          <div id="pkInArea">
+            <div id="pkTxtIn">
+              <input
+                id="refIn"
+                type="text"
+                placeholder=" Key Reference Here..."
+              />
+              <textarea
+                id="pkIn"
+                rows="5"
+                cols="75"
+                placeholder=" Paste Public Keys Here..."
+              ></textarea>
+            </div>
+
+            <!-- Button area for user input -->
+            <div id="PKSr1">
+              <button type="button" id="pkInBtn">Save New Key</button>
+              <button type="button" id="pkCopyBtn">Copy <b>PUBLIC</b> Key</button>
+              <button type="button" id="pkDelBtn">Delete Row</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- -------------------- KEY GENERATION PAGE -------------------- -->
+      <!-- keyPgCont is a swappable page div -->
+      <div id="keyPgCont">
+
+        <!-- keyAreaCont is the background for storageTable-->
+        <div id="keyAreaCont">
+          <div id="keyArea">
+            <table id="storageTable"></table>
+          </div>
+        </div>
+
+        <!-- Area holding all button inputs -->
+        <div id="KGbuttonArea">
+
+          <!-- top row buttons -->
+          <div id="KGBr1">
+            <button type="button" id="copyPubKGBtn">Copy <b>PUBLIC</b> Key</button>
+            <button type="button" id="deleteKGBtn">Delete Key Pair</button>
+            <button type="button" id="copyPrivKGBtn">Copy <b>PRIVATE</b> Key</button>
+          </div>
+
+          <!-- bottom row buttons -->
+          <div id="KGBr2">
+            <button type="button" id="genKeysBtn">Generate Key</button>
+            <button type="button" id="resetNumsBtn">Reset Storage</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- -------------------- FAQ PAGE -------------------- -->
+       <!-- faqPgCont is a swappable page div -->
+      <div id="faqPgCont">
+
+        <!-- top text area -->
+        <div id="faqExpTxt">
+          <h3>Step by step usage</h3>
+          <h4><b>Encryption:</b></h4>
+          <ol>
+            <li>Generate your own key pair</li>
+            <li>Get the public key of the message receiver</li>
+            <li>Encrypt your message with their public key</li>
+            <li>Send all the data (ct, iv, mssg) to the recipient</li>
+          </ol>
+          <h4><b>Decryption:</b></h4>
+          <ol>
+            <li>Recieve the message encrypted with your public key</li>
+            <li>Ensure it is formatted as (ct, iv, mssg)</li>
+            <li>Use your private key to decrypt the message</li>
+          </ol>
+        </div>
+
+        <!-- middle text area -->
+        <div class="faqTxt">
+          <p>
+            <-> This extension utilises KYBER-768 key encapsulation together
+            with AES for post-quantum message encryption. All data saved is
+            stored locally on your device and can be fully deleted with the
+            button below if needed.
+          </p>
+
+          <p>
+            <-> Public keys can be shared with anyone, other people need your
+            public key to send you messages.<br />
+            <->
+            <b>DO NOT share private keys with anyone</b>, these must be kept
+            secret. Copying them to a password protected text file is
+            recommended.
+          </p>
+
+          <p>
+            <-> All encrypted messages <b>MUST</b> have the exact text
+            <b>"ct = ", "iv = ", "mssg = "</b>, otherwise it will not be able to
+            be read it.
+          </p>
+
+          <p>
+            <-> Public keys are not personally identifiable on their own, so it
+            is advised that you choose the reference carefully. Using names or
+            other identifying information as references could reveal who you are
+            communicating with if your device is ever accessed by someone else.
+          </p>
+
+          <p>
+            <-> If using keys generated outside of this extension, make sure it
+            has been formatted with base64 encoding or it won't work.
+          </p>
+
+          <p>
+            <-> If an error popup shows, do not check the box unless you don't
+            want future popups to show.
+          </p>
+
+          <p>
+            <-> The storage allows for a maximum amount of 1000 key pairs and
+            1000 public key / reference pairs.
+          </p>
+
+          <p>
+            <-> The maximum amount of text that can be encrypted is ~63,000
+            characters
+          </p>
+        </div>
+
+        <!-- bottom text area -->
+        <div class="faqTxt">
+          <p><b>! DISCLAIMER !</b></p>
+          <p>
+            This extension is provided as-is for personal use. The developer
+            accepts no liability for any loss, damage, or legal conseqences
+            arising from the use or misuse of this extension. It is the user's
+            responsibility to ensure that they are following all aplicable laws
+            and regulations.
+          </p>
+          <p>
+            The extension does not collect, transmit, or share any personally
+            identifiable data. All data is stored in plaintext (for now) on your
+            device, using Chrome's built in storage API 'chrome.storage.local',
+            and never leaves it. In accordance with the UK's GDPR laws, you
+            retain all control over the data stored, and can delete it at any
+            time using the button below.
+          </p>
+
+          <p>
+            By using this extension, you agree to the disclaimer as described above
+          </p>
+        </div>
+
+        <!-- wipe data button -->
+        <div id="faqBtnArea">
+          <button type="button" id="dataWipeBtn">Delete All Data</button>
+        </div>
+      </div>
+
+      <!-------------------------------- Nav Bar ----------------------------------------------->
+      <!-- navBarCont is always visable on the right -->
+      <div id="navBarCont">
+
+        <!-- Logo created by Tommaso Gambro -->
+        <img src="KBR_logo.png" id="logoImg" alt="" />
+
+        <!-- shown whe the logo is clicked -->
+        <div id="logoTxt">
+          <p>Made by Tom Gambro<br /><br />Last updated 08/04/26</p>
+        </div>
+        <div id="navBarInner">
+          <button type="button" id="mainBtn">Home Page</button>
+          <button type="button" id="storBtn">Storage Page</button>
+          <button type="button" id="keyBtn">Make Key Pair</button>
+          <button type="button" id="faqBtn">FAQ Page</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- External JS file points to compiled popup.js file -->
+    <script type="module" src="../build/dist/popup.bundle.js"></script>
+  </body>
+</html>
