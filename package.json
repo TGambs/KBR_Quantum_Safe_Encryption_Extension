@@ -1,5 +1,5 @@
 {
-  "name": "browser_extension_testing",
+  "name": "KBR_Quantum_Safe_Encryption_Extension",
   "version": "1.0.0",
   "description": "For practice and testing building chrome and firefox extensions\r Tutorial found here: https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world",
   "main": "kyber.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TGambs/Browser_Extension_Testing.git"
+    "url": "git+https://github.com/TGambs/KBR_Quantum_Safe_Encryption_Extension.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TGambs/Browser_Extension_Testing/issues"
+    "url": "https://github.com/TGambs/KBR_Quantum_Safe_Encryption_Extension/issues"
   },
-  "homepage": "https://github.com/TGambs/Browser_Extension_Testing#readme",
+  "homepage": "https://github.com/TGambs/KBR_Quantum_Safe_Encryption_Extension#readme",
   "devDependencies": {
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"

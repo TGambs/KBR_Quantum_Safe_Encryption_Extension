@@ -1,1 +1,1 @@
-(self.webpackChunkbrowser_extension_testing=self.webpackChunkbrowser_extension_testing||[]).push([[146],{146(){}}]);
+(self.webpackChunkKBR_Quantum_Safe_Encryption_Extension=self.webpackChunkKBR_Quantum_Safe_Encryption_Extension||[]).push([[146],{146(){}}]);
